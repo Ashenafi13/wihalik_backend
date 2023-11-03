@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Wiha_likiModelStoreContainer" CdmEntityContainer="Wiha_likiEntities">
+    <EntitySetMapping Name="answer_sms_mapping">
+      <EntityTypeMapping TypeName="Wiha_likiModel.answer_sms_mapping">
+        <MappingFragment StoreEntitySet="answer_sms_mapping">
+          <ScalarProperty Name="regDate" ColumnName="regDate" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="qu_Id" ColumnName="qu_Id" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="episodes">
+      <EntityTypeMapping TypeName="Wiha_likiModel.episode">
+        <MappingFragment StoreEntitySet="episodes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seasons">
+      <EntityTypeMapping TypeName="Wiha_likiModel.season">
+        <MappingFragment StoreEntitySet="seasons">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registers">
+      <EntityTypeMapping TypeName="Wiha_likiModel.register">
+        <MappingFragment StoreEntitySet="register">
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="choices">
+      <EntityTypeMapping TypeName="Wiha_likiModel.choice">
+        <MappingFragment StoreEntitySet="choices">
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="isAnswer" ColumnName="isAnswer" />
+          <ScalarProperty Name="choice_label" ColumnName="choice_label" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="questions">
+      <EntityTypeMapping TypeName="Wiha_likiModel.question">
+        <MappingFragment StoreEntitySet="questions">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+          <ScalarProperty Name="season_id" ColumnName="season_id" />
+          <ScalarProperty Name="question_label" ColumnName="question_label" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
