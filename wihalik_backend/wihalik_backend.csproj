@@ -170,6 +170,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
+    <Compile Include="Controllers\SMSController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +185,9 @@
     <Compile Include="Models\episode.cs">
       <DependentUpon>wihaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ozekimessagein.cs">
+      <DependentUpon>SMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\question.cs">
       <DependentUpon>wihaModel.tt</DependentUpon>
     </Compile>
@@ -192,6 +196,21 @@
     </Compile>
     <Compile Include="Models\season.cs">
       <DependentUpon>wihaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SMSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SMSModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\wihaModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -219,6 +238,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\SMSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMSModel.edmx</DependentUpon>
+      <LastGenOutput>SMSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SMSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SMSModel.edmx</DependentUpon>
+      <LastGenOutput>SMSModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\wihaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>wihaModel.Context.cs</LastGenOutput>
@@ -256,6 +285,13 @@
     </EntityDeploy>
     <Content Include="Models\wihaModel.edmx.diagram">
       <DependentUpon>wihaModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\SMSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SMSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SMSModel.edmx.diagram">
+      <DependentUpon>SMSModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EBCSMSModelStoreContainer" CdmEntityContainer="EBCSMSEntities">
+    <EntitySetMapping Name="ozekimessageins">
+      <EntityTypeMapping TypeName="EBCSMSModel.ozekimessagein">
+        <MappingFragment StoreEntitySet="ozekimessagein">
+          <ScalarProperty Name="reference" ColumnName="reference" />
+          <ScalarProperty Name="msgtype" ColumnName="msgtype" />
+          <ScalarProperty Name="operator" ColumnName="operator" />
+          <ScalarProperty Name="receivedtime" ColumnName="receivedtime" />
+          <ScalarProperty Name="senttime" ColumnName="senttime" />
+          <ScalarProperty Name="msg" ColumnName="msg" />
+          <ScalarProperty Name="receiver" ColumnName="receiver" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

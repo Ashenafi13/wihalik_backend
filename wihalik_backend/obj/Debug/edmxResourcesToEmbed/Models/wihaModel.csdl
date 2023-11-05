@@ -50,6 +50,7 @@
     <Property Name="choice_label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="isAnswer" Type="Int32" />
     <Property Name="question_id" Type="Int32" />
+    <Property Name="alphabet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="question">
     <Key>
@@ -59,7 +60,9 @@
     <Property Name="question_label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="season_id" Type="Int32" />
     <Property Name="episode_id" Type="Int32" />
-    <Property Name="time" Type="Int32" />
+    <Property Name="time" Type="Double" />
     <Property Name="status" Type="Int32" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

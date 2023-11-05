@@ -19,6 +19,7 @@
     <Property Name="choice_label" Type="nvarchar(max)" />
     <Property Name="isAnswer" Type="int" />
     <Property Name="question_id" Type="int" />
+    <Property Name="alphabet" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="episodes">
     <Key>
@@ -36,8 +37,10 @@
     <Property Name="question_label" Type="nvarchar(max)" />
     <Property Name="season_id" Type="int" />
     <Property Name="episode_id" Type="int" />
-    <Property Name="time" Type="int" />
+    <Property Name="time" Type="float" />
     <Property Name="status" Type="int" />
+    <Property Name="startDate" Type="datetime" />
+    <Property Name="endDate" Type="datetime" />
   </EntityType>
   <EntityType Name="register">
     <Key>

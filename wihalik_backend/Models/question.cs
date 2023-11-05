@@ -18,7 +18,9 @@ namespace wihalik_backend.Models
         public string question_label { get; set; }
         public Nullable<int> season_id { get; set; }
         public Nullable<int> episode_id { get; set; }
-        public Nullable<int> time { get; set; }
+        public Nullable<double> time { get; set; }
         public Nullable<int> status { get; set; }
+        public Nullable<System.DateTime> startDate { get; set; }
+        public Nullable<System.DateTime> endDate { get; set; }
     }
 }

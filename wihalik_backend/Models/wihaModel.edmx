@@ -24,6 +24,7 @@
           <Property Name="choice_label" Type="nvarchar(max)" />
           <Property Name="isAnswer" Type="int" />
           <Property Name="question_id" Type="int" />
+          <Property Name="alphabet" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="episodes">
           <Key>
@@ -41,8 +42,10 @@
           <Property Name="question_label" Type="nvarchar(max)" />
           <Property Name="season_id" Type="int" />
           <Property Name="episode_id" Type="int" />
-          <Property Name="time" Type="int" />
+          <Property Name="time" Type="float" />
           <Property Name="status" Type="int" />
+          <Property Name="startDate" Type="datetime" />
+          <Property Name="endDate" Type="datetime" />
         </EntityType>
         <EntityType Name="register">
           <Key>
@@ -121,6 +124,7 @@
           <Property Name="choice_label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="isAnswer" Type="Int32" />
           <Property Name="question_id" Type="Int32" />
+          <Property Name="alphabet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="question">
           <Key>
@@ -130,8 +134,10 @@
           <Property Name="question_label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="season_id" Type="Int32" />
           <Property Name="episode_id" Type="Int32" />
-          <Property Name="time" Type="Int32" />
+          <Property Name="time" Type="Double" />
           <Property Name="status" Type="Int32" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+          <Property Name="endDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -180,6 +186,7 @@
           <EntitySetMapping Name="choices">
             <EntityTypeMapping TypeName="Wiha_likiModel.choice">
               <MappingFragment StoreEntitySet="choices">
+                <ScalarProperty Name="alphabet" ColumnName="alphabet" />
                 <ScalarProperty Name="question_id" ColumnName="question_id" />
                 <ScalarProperty Name="isAnswer" ColumnName="isAnswer" />
                 <ScalarProperty Name="choice_label" ColumnName="choice_label" />
@@ -190,6 +197,8 @@
           <EntitySetMapping Name="questions">
             <EntityTypeMapping TypeName="Wiha_likiModel.question">
               <MappingFragment StoreEntitySet="questions">
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="time" ColumnName="time" />
                 <ScalarProperty Name="episode_id" ColumnName="episode_id" />

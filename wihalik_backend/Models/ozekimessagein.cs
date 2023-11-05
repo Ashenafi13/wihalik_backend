@@ -12,12 +12,16 @@ namespace wihalik_backend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class choice
+    public partial class ozekimessagein
     {
         public int id { get; set; }
-        public string choice_label { get; set; }
-        public Nullable<int> isAnswer { get; set; }
-        public Nullable<int> question_id { get; set; }
-        public string alphabet { get; set; }
+        public string sender { get; set; }
+        public string receiver { get; set; }
+        public string msg { get; set; }
+        public Nullable<System.DateTime> senttime { get; set; }
+        public Nullable<System.DateTime> receivedtime { get; set; }
+        public string @operator { get; set; }
+        public string msgtype { get; set; }
+        public string reference { get; set; }
     }
 }

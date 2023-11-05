@@ -233,6 +233,7 @@ namespace wihalik_backend.Controllers
                 {
                     ch.choice_label = data.choice_label;
                     ch.isAnswer = data.isAnswer;
+                    ch.alphabet = data.alphabet;
                     db.SaveChanges();
                     return 1;
                 }
@@ -243,7 +244,26 @@ namespace wihalik_backend.Controllers
             }
         }
 
-            [Route("api/add/choices")]
+        [Route("api/add/startDate")]
+        [System.Web.Http.AcceptVerbs("POST")]
+        [System.Web.Http.HttpPost]
+        public void updateStartDate(int QId)
+        {
+            using (var db = new Wiha_likiEntities())
+            {
+                var q = db.questions.Where(x => x.id == QId).FirstOrDefault();
+                if(q != null)
+                {
+                    DateTime startDate = DateTime.Now;
+                    DateTime endDate = DateTime.Now.AddSeconds(Convert.ToDouble(q.time));
+                    q.startDate = startDate;
+                    q.endDate = endDate;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        [Route("api/add/choices")]
         [System.Web.Http.AcceptVerbs("POST")]
         [System.Web.Http.HttpPost]
         public int AddChoices(choice data)
@@ -254,7 +274,8 @@ namespace wihalik_backend.Controllers
                 {
                     choice_label = data.choice_label,
                     isAnswer = data.isAnswer,
-                    question_id = data.question_id
+                    question_id = data.question_id,
+                    alphabet = data.alphabet
                 };
                 try
                 {
