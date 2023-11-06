@@ -191,6 +191,7 @@
     <Compile Include="Models\question.cs">
       <DependentUpon>wihaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ranks.cs" />
     <Compile Include="Models\register.cs">
       <DependentUpon>wihaModel.tt</DependentUpon>
     </Compile>

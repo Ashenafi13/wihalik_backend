@@ -40,7 +40,10 @@ namespace wihalik_backend.Controllers
                                 if (isAnswerCorrect)
                                 {
                                     insertCompetitor(1, sms.msg, sms.sender, QId);
-                                   
+                                    updateCompetitorTotalAnswerd(sms.sender);
+
+
+
                                 }
                                 else
                                 {
@@ -61,6 +64,44 @@ namespace wihalik_backend.Controllers
                 }
 
                 return result;
+            }
+        }
+
+        public void updateCompetitorTotalAnswerd(string phone)
+        {
+            int? totalAnswerdByCompetitor = GetTotalAnswerdByCompetitor(phone);
+            using (var db = new Wiha_likiEntities())
+            {
+                var comp = db.registers.Where(x => x.phone.Equals(phone)).FirstOrDefault();
+                if (comp != null)
+                {
+                    comp.totalAnswered = totalAnswerdByCompetitor + 1;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public int? GetTotalAnswerdByCompetitor(string phone)
+        {
+            using(var db = new Wiha_likiEntities())
+            {
+                var comp = db.registers.Where(x => x.phone.Equals(phone)).FirstOrDefault();
+                if(comp != null)
+                {
+                    if(comp.totalAnswered != null)
+                    {
+                        return comp.totalAnswered;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                    
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -228,7 +269,16 @@ namespace wihalik_backend.Controllers
                 return list;
             }
         }
-
-
+        [Route("api/Competitor/rank")]
+        [System.Web.Http.AcceptVerbs("GET")]
+        [System.Web.Http.HttpGet]
+        public IEnumerable<ranks> GetRank()
+        {
+            using (var db = new Wiha_likiEntities())
+            {
+                var rank = db.Database.SqlQuery<ranks>("SELECT c.*, DENSE_RANK() OVER (ORDER BY totalAnswered DESC) AS Rank FROM register  c").ToList();
+                return rank;
+            }
+        }
     }
 }

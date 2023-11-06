@@ -8,9 +8,9 @@
         <EntityTypeShape EntityType="Wiha_likiModel.answer_sms_mapping" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Wiha_likiModel.episode" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Wiha_likiModel.season" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Wiha_likiModel.register" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="Wiha_likiModel.choice" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="Wiha_likiModel.question" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Wiha_likiModel.register" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

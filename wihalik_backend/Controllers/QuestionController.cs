@@ -220,6 +220,36 @@ namespace wihalik_backend.Controllers
             }
         }
 
+        [Route("api/update/All/questions")]
+        [System.Web.Http.AcceptVerbs("POST")]
+        [System.Web.Http.HttpPost]
+        public int updateQ(int QId, question data)
+        {
+            using(var db = new Wiha_likiEntities())
+            {
+                var q = db.questions.Where(x => x.id == QId).FirstOrDefault();
+                if (q != null)
+                {
+                  if(q.status == 0)
+                    {
+                        q.question_label = data.question_label;
+                        q.time = data.time;
+                        db.SaveChanges();
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+
 
         [Route("api/update/choices")]
         [System.Web.Http.AcceptVerbs("POST")]
@@ -231,11 +261,39 @@ namespace wihalik_backend.Controllers
                 var ch = db.choices.Where(x => x.id == id).FirstOrDefault();
                 if(ch != null)
                 {
-                    ch.choice_label = data.choice_label;
-                    ch.isAnswer = data.isAnswer;
-                    ch.alphabet = data.alphabet;
-                    db.SaveChanges();
-                    return 1;
+                    int? isQuestionAsked = checkQuestionAsked(ch.question_id);
+                    int? isAnswerExist = checkAnswerExist(ch.question_id);
+                    if (isQuestionAsked == 0)
+                    {
+                        if(data.isAnswer == 0)
+                        {
+                            ch.choice_label = data.choice_label;
+                            ch.isAnswer = data.isAnswer;
+                            ch.alphabet = data.alphabet;
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            if (isAnswerExist == 0)
+                            {
+                                ch.choice_label = data.choice_label;
+                                ch.isAnswer = data.isAnswer;
+                                ch.alphabet = data.alphabet;
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                return 2;
+                            }
+                        }
+                       
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                   
                 }
                 else
                 {
@@ -279,9 +337,36 @@ namespace wihalik_backend.Controllers
                 };
                 try
                 {
-                    db.choices.Add(ch);
-                    db.SaveChanges();
-                    return 1;
+                    int? isQuestionAsked = checkQuestionAsked(data.question_id);
+                    if (isQuestionAsked == 0)
+                    {
+                        if(data.isAnswer == 0)
+                        {
+                            db.choices.Add(ch);
+                            db.SaveChanges();
+                            return 1;
+                        }
+                        else
+                        {
+                            int? isAnswerExist = checkAnswerExist(data.question_id);
+                            if (isAnswerExist == 0)
+                            {
+                                db.choices.Add(ch);
+                                db.SaveChanges();
+                                return 1;
+                            }
+                            else
+                            {
+                                return 2;
+                            }
+                        }
+                    
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                    
                 }
                 catch (Exception e)
                 {
@@ -290,7 +375,40 @@ namespace wihalik_backend.Controllers
             }
         }
 
-            [Route("api/add/questions")]
+        public int? checkAnswerExist(int? QId)
+        {
+            using (var db = new Wiha_likiEntities())
+            {
+                var q = db.choices.Where(x => x.question_id == QId && x.isAnswer == 1).FirstOrDefault();
+                if (q != null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
+        public int? checkQuestionAsked(int? QId)
+        {
+            using(var db = new Wiha_likiEntities())
+            {
+                var q = db.questions.Where(x => x.id == QId).FirstOrDefault();
+                if(q != null)
+                {
+                    return q.status;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        } 
+
+
+
+        [Route("api/add/questions")]
         [System.Web.Http.AcceptVerbs("POST")]
         [System.Web.Http.HttpPost]
         public int AddQuestions(question data)

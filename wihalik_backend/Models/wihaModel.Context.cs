@@ -28,8 +28,8 @@ namespace wihalik_backend.Models
         public virtual DbSet<answer_sms_mapping> answer_sms_mapping { get; set; }
         public virtual DbSet<episode> episodes { get; set; }
         public virtual DbSet<season> seasons { get; set; }
-        public virtual DbSet<register> registers { get; set; }
         public virtual DbSet<choice> choices { get; set; }
         public virtual DbSet<question> questions { get; set; }
+        public virtual DbSet<register> registers { get; set; }
     }
 }

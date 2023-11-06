@@ -31,17 +31,10 @@
     <EntitySet Name="answer_sms_mapping" EntityType="Self.answer_sms_mapping" />
     <EntitySet Name="episodes" EntityType="Self.episode" />
     <EntitySet Name="seasons" EntityType="Self.season" />
-    <EntitySet Name="registers" EntityType="Wiha_likiModel.register" />
     <EntitySet Name="choices" EntityType="Wiha_likiModel.choice" />
     <EntitySet Name="questions" EntityType="Wiha_likiModel.question" />
+    <EntitySet Name="registers" EntityType="Wiha_likiModel.register" />
   </EntityContainer>
-  <EntityType Name="register">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="choice">
     <Key>
       <PropertyRef Name="id" />
@@ -64,5 +57,13 @@
     <Property Name="status" Type="Int32" />
     <Property Name="startDate" Type="DateTime" Precision="3" />
     <Property Name="endDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="totalAnswered" Type="Int32" />
   </EntityType>
 </Schema>

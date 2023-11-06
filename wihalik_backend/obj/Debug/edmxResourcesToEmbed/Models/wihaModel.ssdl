@@ -48,6 +48,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="phone" Type="nvarchar" MaxLength="200" />
+    <Property Name="totalAnswered" Type="int" />
   </EntityType>
   <EntityType Name="seasons">
     <Key>
