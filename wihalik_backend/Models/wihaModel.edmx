@@ -33,6 +33,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" />
           <Property Name="status" Type="int" />
+          <Property Name="startTime" Type="float" />
+          <Property Name="season_Id" Type="int" />
         </EntityType>
         <EntityType Name="questions">
           <Key>
@@ -93,6 +95,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="status" Type="Int32" />
+          <Property Name="startTime" Type="Double" />
+          <Property Name="season_Id" Type="Int32" />
         </EntityType>
         <EntityType Name="season">
           <Key>
@@ -162,6 +166,8 @@
           <EntitySetMapping Name="episodes">
             <EntityTypeMapping TypeName="Wiha_likiModel.episode">
               <MappingFragment StoreEntitySet="episodes">
+                <ScalarProperty Name="season_Id" ColumnName="season_Id" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="status" ColumnName="status" />

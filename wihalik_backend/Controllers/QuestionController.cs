@@ -25,11 +25,11 @@ namespace wihalik_backend.Controllers
         [Route("api/episodes")]
         [System.Web.Http.AcceptVerbs("GET")]
         [System.Web.Http.HttpGet]
-        public IEnumerable<episode> GetEpisodes()
+        public IEnumerable<episode> GetEpisodes(int season_Id)
         {
             using (var db = new Wiha_likiEntities())
             {
-                var ep = db.episodes.ToList();
+                var ep = db.episodes.Where(x=>x.season_Id == season_Id).ToList();
                 return ep;
             }
         }
@@ -129,14 +129,15 @@ namespace wihalik_backend.Controllers
                 }
             }
         }
+
         [Route("api/questions")]
         [System.Web.Http.AcceptVerbs("GET")]
         [System.Web.Http.HttpGet]
-        public IEnumerable<question> GetQuestions()
+        public IEnumerable<question> GetQuestions(int season, int episode)
         {
             using (var db = new Wiha_likiEntities())
             {
-                var quest = db.questions.ToList();
+                var quest = db.questions.Where(x=>x.season_id == season && x.episode_id == episode).ToList();
                 return quest;
             }
         }

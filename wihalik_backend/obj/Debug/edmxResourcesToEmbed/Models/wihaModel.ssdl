@@ -28,6 +28,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar(max)" />
     <Property Name="status" Type="int" />
+    <Property Name="startTime" Type="float" />
+    <Property Name="season_Id" Type="int" />
   </EntityType>
   <EntityType Name="questions">
     <Key>

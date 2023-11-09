@@ -142,7 +142,9 @@ C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\Micros
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\Newtonsoft.Json.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Net.Http.Formatting.dll
+C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Cors.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Helpers.dll
+C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.Cors.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.WebHost.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Mvc.dll
@@ -154,10 +156,11 @@ C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\WebGrease.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\EntityFramework.xml
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\EntityFramework.SqlServer.xml
-C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\Newtonsoft.Json.xml
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Net.Http.Formatting.xml
-C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Helpers.xml
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.xml
+C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.Cors.xml
+C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\Newtonsoft.Json.xml
+C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Helpers.xml
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.WebHost.xml
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Mvc.xml
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Optimization.xml
@@ -167,11 +170,8 @@ C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.WebPages.Razor.xml
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\Antlr3.Runtime.pdb
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.csproj.AssemblyReference.cache
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.csproj.CoreCompileInputs.cache
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.csproj.CopyComplete
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.pdb
-C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Cors.dll
-C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.Cors.dll
-C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\bin\System.Web.Http.Cors.xml
+C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.csproj.AssemblyReference.cache

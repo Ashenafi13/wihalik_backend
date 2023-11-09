@@ -17,5 +17,7 @@ namespace wihalik_backend.Models
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<int> status { get; set; }
+        public Nullable<double> startTime { get; set; }
+        public Nullable<int> season_Id { get; set; }
     }
 }

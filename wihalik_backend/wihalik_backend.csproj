@@ -171,7 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SMSController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\SeasonsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +198,7 @@
     <Compile Include="Models\season.cs">
       <DependentUpon>wihaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\season_settings.cs" />
     <Compile Include="Models\SMSModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

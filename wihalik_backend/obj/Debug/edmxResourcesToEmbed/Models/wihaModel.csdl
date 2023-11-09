@@ -18,6 +18,8 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="Int32" />
+    <Property Name="startTime" Type="Double" />
+    <Property Name="season_Id" Type="Int32" />
   </EntityType>
   <EntityType Name="season">
     <Key>

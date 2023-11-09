@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1c0ab4b0a62146f9a66a089c4a14fb35" Name="Diagram1">
-        <EntityTypeShape EntityType="Wiha_likiModel.answer_sms_mapping" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Wiha_likiModel.answer_sms_mapping" Width="1.5" PointX="1.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Wiha_likiModel.episode" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Wiha_likiModel.season" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Wiha_likiModel.season" Width="1.5" PointX="5.125" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Wiha_likiModel.choice" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="Wiha_likiModel.question" Width="1.5" PointX="3.375" PointY="6.75" />
         <EntityTypeShape EntityType="Wiha_likiModel.register" Width="1.5" PointX="3.375" PointY="0.75" />
