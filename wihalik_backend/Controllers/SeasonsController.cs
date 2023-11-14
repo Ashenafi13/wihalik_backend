@@ -105,7 +105,8 @@ namespace wihalik_backend.Controllers
                     name = data.name,
                     startTime = data.startTime,
                     season_Id = data.season_Id,
-                    status = 0
+                    status = 0,
+                    timer_status = 0
                 };
                 int exist = checkEpisodes(data.name, data.season_Id);
                 if (exist == 0)

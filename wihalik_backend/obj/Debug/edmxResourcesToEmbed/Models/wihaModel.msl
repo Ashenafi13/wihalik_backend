@@ -16,6 +16,9 @@
     <EntitySetMapping Name="episodes">
       <EntityTypeMapping TypeName="Wiha_likiModel.episode">
         <MappingFragment StoreEntitySet="episodes">
+          <ScalarProperty Name="timer_status" ColumnName="timer_status" />
+          <ScalarProperty Name="endedDateTime" ColumnName="endedDateTime" />
+          <ScalarProperty Name="startedDateTime" ColumnName="startedDateTime" />
           <ScalarProperty Name="season_Id" ColumnName="season_Id" />
           <ScalarProperty Name="startTime" ColumnName="startTime" />
           <ScalarProperty Name="id" ColumnName="id" />

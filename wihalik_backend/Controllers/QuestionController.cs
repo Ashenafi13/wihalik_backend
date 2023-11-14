@@ -86,7 +86,7 @@ namespace wihalik_backend.Controllers
                 var query2 = db.episodes.Where(x => x.status == 1).FirstOrDefault();
                 if (query != null && query2 != null)
                 {
-                    return new active { season = query.name , episode = query2.name} ;
+                    return new active { season = query.name , episode = query2.name, episodeStartTime = query2.startTime, time_status = query2.timer_status} ;
                 }
                 else
                 {

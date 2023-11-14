@@ -153,9 +153,8 @@ namespace wihalik_backend.Controllers
                     {
                         string sender = GenerateRandomPhoneNumber();
                         string msg = GenerateRandomLetter();
-                        int re = reg(sender);
-                        if (re == 1)
-                        {
+                       
+                       
                             var obj = new ozekimessagein
                             {
                                 receiver = "+800",
@@ -171,7 +170,7 @@ namespace wihalik_backend.Controllers
 
                             db.ozekimessageins.Add(obj);
                             db.SaveChanges();
-                        }
+                        
                     }
 
                     

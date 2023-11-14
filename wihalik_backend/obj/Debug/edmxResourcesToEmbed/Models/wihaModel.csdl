@@ -20,6 +20,9 @@
     <Property Name="status" Type="Int32" />
     <Property Name="startTime" Type="Double" />
     <Property Name="season_Id" Type="Int32" />
+    <Property Name="startedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="endedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="timer_status" Type="Int32" />
   </EntityType>
   <EntityType Name="season">
     <Key>

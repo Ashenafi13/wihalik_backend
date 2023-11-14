@@ -35,6 +35,9 @@
           <Property Name="status" Type="int" />
           <Property Name="startTime" Type="float" />
           <Property Name="season_Id" Type="int" />
+          <Property Name="startedDateTime" Type="datetime" />
+          <Property Name="endedDateTime" Type="datetime" />
+          <Property Name="timer_status" Type="int" />
         </EntityType>
         <EntityType Name="questions">
           <Key>
@@ -97,6 +100,9 @@
           <Property Name="status" Type="Int32" />
           <Property Name="startTime" Type="Double" />
           <Property Name="season_Id" Type="Int32" />
+          <Property Name="startedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="endedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="timer_status" Type="Int32" />
         </EntityType>
         <EntityType Name="season">
           <Key>
@@ -166,6 +172,9 @@
           <EntitySetMapping Name="episodes">
             <EntityTypeMapping TypeName="Wiha_likiModel.episode">
               <MappingFragment StoreEntitySet="episodes">
+                <ScalarProperty Name="timer_status" ColumnName="timer_status" />
+                <ScalarProperty Name="endedDateTime" ColumnName="endedDateTime" />
+                <ScalarProperty Name="startedDateTime" ColumnName="startedDateTime" />
                 <ScalarProperty Name="season_Id" ColumnName="season_Id" />
                 <ScalarProperty Name="startTime" ColumnName="startTime" />
                 <ScalarProperty Name="id" ColumnName="id" />

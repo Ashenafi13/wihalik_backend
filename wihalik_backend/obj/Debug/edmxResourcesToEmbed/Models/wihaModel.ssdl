@@ -30,6 +30,9 @@
     <Property Name="status" Type="int" />
     <Property Name="startTime" Type="float" />
     <Property Name="season_Id" Type="int" />
+    <Property Name="startedDateTime" Type="datetime" />
+    <Property Name="endedDateTime" Type="datetime" />
+    <Property Name="timer_status" Type="int" />
   </EntityType>
   <EntityType Name="questions">
     <Key>
