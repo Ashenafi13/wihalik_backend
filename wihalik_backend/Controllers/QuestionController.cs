@@ -439,5 +439,39 @@ namespace wihalik_backend.Controllers
 
             }
         }
+
+        [Route("api/season/episode/winners")]
+        [System.Web.Http.AcceptVerbs("GET")]
+        [System.Web.Http.HttpGet]
+        public IEnumerable<dynamic> EpisodeWinners()
+        {
+            
+            using (var db = new Wiha_likiEntities())
+            {
+                int totalQuesions = GetTotalNumberOfQuesionsPerEpisodes();
+                var winners = db.registers.Where(x => x.totalAnswered == totalQuesions).ToList();
+                return winners;
+            }
+        }
+
+        public int GetTotalNumberOfQuesionsPerEpisodes()
+        {
+
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
+            using (var db = new Wiha_likiEntities())
+            {
+                var qu = db.questions.Where(x => x.episode_id == episode && x.season_id == episode).ToList();
+
+                if(qu.Count > 0)
+                {
+                    return qu.Count;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }

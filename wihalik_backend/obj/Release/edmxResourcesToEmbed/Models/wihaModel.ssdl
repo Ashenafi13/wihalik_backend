@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Wiha_likiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="answer_sms_mapping">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="100" />
+    <Property Name="qu_Id" Type="int" />
+    <Property Name="answer" Type="int" />
+    <Property Name="msg" Type="nvarchar(max)" />
+    <Property Name="regDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="choices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="choice_label" Type="nvarchar(max)" />
+    <Property Name="isAnswer" Type="int" />
+    <Property Name="question_id" Type="int" />
+    <Property Name="alphabet" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="episodes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="status" Type="int" />
+    <Property Name="startTime" Type="float" />
+    <Property Name="season_Id" Type="int" />
+    <Property Name="startedDateTime" Type="datetime" />
+    <Property Name="endedDateTime" Type="datetime" />
+    <Property Name="timer_status" Type="int" />
+  </EntityType>
+  <EntityType Name="questions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question_label" Type="nvarchar(max)" />
+    <Property Name="season_id" Type="int" />
+    <Property Name="episode_id" Type="int" />
+    <Property Name="time" Type="float" />
+    <Property Name="status" Type="int" />
+    <Property Name="startDate" Type="datetime" />
+    <Property Name="endDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="200" />
+    <Property Name="totalAnswered" Type="int" />
+  </EntityType>
+  <EntityType Name="seasons">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityContainer Name="Wiha_likiModelStoreContainer">
+    <EntitySet Name="answer_sms_mapping" EntityType="Self.answer_sms_mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="choices" EntityType="Self.choices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="episodes" EntityType="Self.episodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="questions" EntityType="Self.questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="seasons" EntityType="Self.seasons" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

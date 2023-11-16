@@ -61,6 +61,17 @@ namespace wihalik_backend.Controllers
             }
         }
 
+        [Route("api/get/sms/all")]
+        [System.Web.Http.AcceptVerbs("POST")]
+        [System.Web.Http.HttpPost]
+        public IEnumerable<dynamic> GetSMS()
+        {
+            using(var db = new EBCSMSEntities())
+            {
+                var ebcsms = db.ozekimessageins.ToList();
+                return ebcsms;
+            }
+        }
         public DateTime? GetStartDate()
         {
             using (var db = new Wiha_likiEntities())
@@ -91,6 +102,8 @@ namespace wihalik_backend.Controllers
                 }
             }
         }
+
+        
 
         public void Addregistor(string phone)
         {

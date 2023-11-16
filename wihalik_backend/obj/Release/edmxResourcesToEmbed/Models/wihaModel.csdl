@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Wiha_likiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="answer_sms_mapping">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="qu_Id" Type="Int32" />
+    <Property Name="answer" Type="Int32" />
+    <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="regDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="episode">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="startTime" Type="Double" />
+    <Property Name="season_Id" Type="Int32" />
+    <Property Name="startedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="endedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="timer_status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="season">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="Wiha_likiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="answer_sms_mapping" EntityType="Self.answer_sms_mapping" />
+    <EntitySet Name="episodes" EntityType="Self.episode" />
+    <EntitySet Name="seasons" EntityType="Self.season" />
+    <EntitySet Name="choices" EntityType="Wiha_likiModel.choice" />
+    <EntitySet Name="questions" EntityType="Wiha_likiModel.question" />
+    <EntitySet Name="registers" EntityType="Wiha_likiModel.register" />
+  </EntityContainer>
+  <EntityType Name="choice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="choice_label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isAnswer" Type="Int32" />
+    <Property Name="question_id" Type="Int32" />
+    <Property Name="alphabet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="question_label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="season_id" Type="Int32" />
+    <Property Name="episode_id" Type="Int32" />
+    <Property Name="time" Type="Double" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="startDate" Type="DateTime" Precision="3" />
+    <Property Name="endDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="totalAnswered" Type="Int32" />
+  </EntityType>
+</Schema>
