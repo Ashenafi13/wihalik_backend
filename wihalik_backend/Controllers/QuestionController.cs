@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using wihalik_backend.Models;
 
@@ -440,19 +442,71 @@ namespace wihalik_backend.Controllers
             }
         }
 
+
+        // public async Task<PagedResult<register>> EpisodeWinners(int currentPage, int pageSize)
+        //{
+
+        //    using (var db = new Wiha_likiEntities())
+        //    {
+
+        //        // Calculate the number of items to skip
+        //        int skip = (currentPage - 1) * pageSize;
+        //        int totalQuesions = GetTotalNumberOfQuesionsPerEpisodes();
+        //        // Query the database and get the total count
+        //        var query = db.registers.Where(x => x.totalAnswered == totalQuesions).AsQueryable();
+
+        //        int totalItems = await query.CountAsync();
+
+
+        //        // Apply pagination to the query
+        //        var pagedData = await query.Skip(skip).Take(pageSize).ToListAsync();
+
+
+        //        // Return the result as a PagedResult
+        //        return new PagedResult<register>
+        //        {
+        //            CurrentPage = currentPage,
+        //            PageSize = pageSize,
+        //            TotalItems = totalItems,
+        //            Data = pagedData
+        //        };
+
+        //    }
+        //}
         [Route("api/season/episode/winners")]
         [System.Web.Http.AcceptVerbs("GET")]
         [System.Web.Http.HttpGet]
-        public IEnumerable<dynamic> EpisodeWinners()
+        public async Task<PagedResult<register>> EpisodeWinners(int currentPage, int pageSize)
         {
-            
             using (var db = new Wiha_likiEntities())
             {
+                // Calculate the number of items to skip
+                int skip = Math.Max(0, (currentPage - 1) * pageSize);
                 int totalQuesions = GetTotalNumberOfQuesionsPerEpisodes();
-                var winners = db.registers.Where(x => x.totalAnswered == totalQuesions).ToList();
-                return winners;
+
+                // Query the database and get the total count
+                var query = db.registers
+                    .Where(x => x.totalAnswered == totalQuesions)
+                    .OrderBy(x => x.id) // Replace SomeProperty with the property you want to order by
+                    .AsQueryable();
+
+                int totalItems = await query.CountAsync();
+
+                // Apply pagination to the query
+                var pagedData = await query.Skip(skip).Take(pageSize).ToListAsync();
+
+                // Return the result as a PagedResult
+                return new PagedResult<register>
+                {
+                    CurrentPage = currentPage,
+                    PageSize = pageSize,
+                    TotalItems = totalItems,
+                    Data = pagedData
+                };
             }
         }
+
+
 
         public int GetTotalNumberOfQuesionsPerEpisodes()
         {
@@ -473,5 +527,12 @@ namespace wihalik_backend.Controllers
                 }
             }
         }
+    }
+    public class PagedResult<T>
+    {
+        public int CurrentPage { get; set; }
+        public int PageSize { get; set; }
+        public int TotalItems { get; set; }
+        public IList<T> Data { get; set; }
     }
 }

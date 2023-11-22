@@ -174,4 +174,3 @@ C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.csproj.CopyComplete
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.dll
 C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.pdb
-C:\Users\admin\Documents\Projects\EBC\wihalik_backend\wihalik_backend\obj\Debug\wihalik_backend.csproj.AssemblyReference.cache

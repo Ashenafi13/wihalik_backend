@@ -45,7 +45,7 @@ namespace wihalik_backend.Controllers
             DateTime? endTime = GetEndDate();
             using (var db = new EBCSMSEntities())
             {
-                var smsQuery = db.Database.SqlQuery<ozekimessagein>("SELECT * FROM [EBCSMS].[dbo].[ozekimessagein] WHERE receivedtime BETWEEN '" + startTime + "' AND '" + endTime + "'").ToList();
+                var smsQuery = db.Database.SqlQuery<ozekimessagein>("SELECT * FROM [EBCSMS].[dbo].[ozekimessagein] WHERE receiver='+800' AND receivedtime BETWEEN '" + startTime + "' AND '" + endTime + "'").ToList();
                 if(smsQuery.Count > 0)
                 {
                     smsQuery.ForEach((sms) => {

@@ -32,7 +32,7 @@ namespace wihalik_backend.Controllers
 
                         for (int i = 0; i < registored.Count(); i++)
                         {
-                            var sms = db.Database.SqlQuery<ozekimessagein>("SELECT * FROM [EBCSMS].[dbo].[ozekimessagein] WHERE receivedtime BETWEEN '" + startDate + "' AND '" + endDate + "' AND sender='" + registored[i].phone + "'").FirstOrDefault();
+                            var sms = db.Database.SqlQuery<ozekimessagein>("SELECT * FROM [EBCSMS].[dbo].[ozekimessagein] WHERE receiver='+800' AND receivedtime BETWEEN '" + startDate + "' AND '" + endDate + "' AND sender='" + registored[i].phone + "'").FirstOrDefault();
                             if (sms != null)
                             {
 
