@@ -277,7 +277,7 @@ namespace wihalik_backend.Controllers
                         }
                         else
                         {
-                            if (isAnswerExist == 0)
+                            if (isAnswerExist == 0 || isAnswerExist == id)
                             {
                                 ch.choice_label = data.choice_label;
                                 ch.isAnswer = data.isAnswer;
@@ -304,6 +304,8 @@ namespace wihalik_backend.Controllers
                 }
             }
         }
+
+       
 
         [Route("api/add/startDate")]
         [System.Web.Http.AcceptVerbs("POST")]
@@ -383,13 +385,13 @@ namespace wihalik_backend.Controllers
             using (var db = new Wiha_likiEntities())
             {
                 var q = db.choices.Where(x => x.question_id == QId && x.isAnswer == 1).FirstOrDefault();
-                if (q != null)
+                if (q == null)
                 {
                     return 0;
                 }
                 else
                 {
-                    return 1;
+                    return q.id;
                 }
             }
         }
@@ -418,12 +420,16 @@ namespace wihalik_backend.Controllers
         {
             using (var db = new Wiha_likiEntities())
             {
+                int count = GetNumOfQuestions(data.episode_id, data.season_id);
+                int quNum = count == 0 ? 1 : count + 1;
                 var questions = new question
                 {
                     episode_id = data.episode_id,
                     question_label = data.question_label,
                     season_id = data.season_id,
-                    time = data.time
+                    time = data.time,
+                    quNum = quNum,
+                    status= 0
                 };
 
                 try
@@ -442,6 +448,15 @@ namespace wihalik_backend.Controllers
             }
         }
 
+        public int GetNumOfQuestions(int? episode,int? season)
+        {
+
+          using(var db = new Wiha_likiEntities())
+            {
+                var count = db.questions.Where(x => x.episode_id == episode && x.season_id == season).ToList();
+                return count.Count;
+            }
+        }
 
         // public async Task<PagedResult<register>> EpisodeWinners(int currentPage, int pageSize)
         //{
@@ -478,6 +493,8 @@ namespace wihalik_backend.Controllers
         [System.Web.Http.HttpGet]
         public async Task<PagedResult<register>> EpisodeWinners(int currentPage, int pageSize)
         {
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
             using (var db = new Wiha_likiEntities())
             {
                 // Calculate the number of items to skip
@@ -486,11 +503,12 @@ namespace wihalik_backend.Controllers
 
                 // Query the database and get the total count
                 var query = db.registers
-                    .Where(x => x.totalAnswered == totalQuesions)
+                    .Where(x => x.totalAnswered >= totalQuesions && x.season_id == season && x.episode_id == episode)
                     .OrderBy(x => x.id) // Replace SomeProperty with the property you want to order by
                     .AsQueryable();
 
                 int totalItems = await query.CountAsync();
+               
 
                 // Apply pagination to the query
                 var pagedData = await query.Skip(skip).Take(pageSize).ToListAsync();

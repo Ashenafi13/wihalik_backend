@@ -22,5 +22,6 @@ namespace wihalik_backend.Models
         public Nullable<int> status { get; set; }
         public Nullable<System.DateTime> startDate { get; set; }
         public Nullable<System.DateTime> endDate { get; set; }
+        public Nullable<int> quNum { get; set; }
     }
 }

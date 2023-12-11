@@ -51,6 +51,7 @@
           <Property Name="status" Type="int" />
           <Property Name="startDate" Type="datetime" />
           <Property Name="endDate" Type="datetime" />
+          <Property Name="quNum" Type="int" />
         </EntityType>
         <EntityType Name="register">
           <Key>
@@ -59,6 +60,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="phone" Type="nvarchar" MaxLength="200" />
           <Property Name="totalAnswered" Type="int" />
+          <Property Name="episode_id" Type="int" />
+          <Property Name="season_id" Type="int" />
         </EntityType>
         <EntityType Name="seasons">
           <Key>
@@ -117,8 +120,8 @@
           <EntitySet Name="episodes" EntityType="Self.episode" />
           <EntitySet Name="seasons" EntityType="Self.season" />
           <EntitySet Name="choices" EntityType="Wiha_likiModel.choice" />
-          <EntitySet Name="questions" EntityType="Wiha_likiModel.question" />
           <EntitySet Name="registers" EntityType="Wiha_likiModel.register" />
+          <EntitySet Name="questions" EntityType="Wiha_likiModel.question" />
         </EntityContainer>
         <EntityType Name="choice">
           <Key>
@@ -129,6 +132,16 @@
           <Property Name="isAnswer" Type="Int32" />
           <Property Name="question_id" Type="Int32" />
           <Property Name="alphabet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="totalAnswered" Type="Int32" />
+          <Property Name="episode_id" Type="Int32" />
+          <Property Name="season_id" Type="Int32" />
         </EntityType>
         <EntityType Name="question">
           <Key>
@@ -142,14 +155,7 @@
           <Property Name="status" Type="Int32" />
           <Property Name="startDate" Type="DateTime" Precision="3" />
           <Property Name="endDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="register">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="totalAnswered" Type="Int32" />
+          <Property Name="quNum" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -203,9 +209,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="registers">
+            <EntityTypeMapping TypeName="Wiha_likiModel.register">
+              <MappingFragment StoreEntitySet="register">
+                <ScalarProperty Name="season_id" ColumnName="season_id" />
+                <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+                <ScalarProperty Name="totalAnswered" ColumnName="totalAnswered" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="questions">
             <EntityTypeMapping TypeName="Wiha_likiModel.question">
               <MappingFragment StoreEntitySet="questions">
+                <ScalarProperty Name="quNum" ColumnName="quNum" />
                 <ScalarProperty Name="endDate" ColumnName="endDate" />
                 <ScalarProperty Name="startDate" ColumnName="startDate" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -213,15 +231,6 @@
                 <ScalarProperty Name="episode_id" ColumnName="episode_id" />
                 <ScalarProperty Name="season_id" ColumnName="season_id" />
                 <ScalarProperty Name="question_label" ColumnName="question_label" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="registers">
-            <EntityTypeMapping TypeName="Wiha_likiModel.register">
-              <MappingFragment StoreEntitySet="register">
-                <ScalarProperty Name="totalAnswered" ColumnName="totalAnswered" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -19,7 +19,8 @@ namespace wihalik_backend.Controllers
         {
             DateTime? startDate = GetStartDate(QId);
             DateTime? endDate = GetEndDate(QId);
-
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
             int result = 0;
             using (var ddb = new Wiha_likiEntities())
             {
@@ -28,7 +29,7 @@ namespace wihalik_backend.Controllers
                     try
                     {
 
-                        var registored = ddb.registers.ToList();
+                        var registored = ddb.registers.Where(x=>x.episode_id == episode && x.season_id == season).ToList();
 
                         for (int i = 0; i < registored.Count(); i++)
                         {
@@ -38,7 +39,7 @@ namespace wihalik_backend.Controllers
 
                                 bool isAnswerCorrect = checkAnswer(sms.msg, QId);
                                 if (isAnswerCorrect == true)
-                                {
+                                { 
                                     insertCompetitor(1, sms.msg, sms.sender, QId);
                                   
 
@@ -66,26 +67,71 @@ namespace wihalik_backend.Controllers
                 }
             }
         }
-
-        public void updateCompetitorTotalAnswerd(string phone)
+        public int GetActiveSeason()
         {
+            using (var db = new Wiha_likiEntities())
+            {
+                var query = db.seasons.Where(x => x.status == 1).FirstOrDefault();
+
+                if (query != null)
+                {
+                    return query.id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public int GetActivEpisodes()
+        {
+            using (var db = new Wiha_likiEntities())
+            {
+                var query = db.episodes.Where(x => x.status == 1).FirstOrDefault();
+                if (query != null)
+                {
+                    return query.id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+        public void updateCompetitorTotalAnswerd(string phone,int QId)
+        {
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
             int? totalAnswerdByCompetitor = GetTotalAnswerdByCompetitor(phone);
             using (var db = new Wiha_likiEntities())
             {
-                var comp = db.registers.Where(x => x.phone.Equals(phone)).FirstOrDefault();
+                var comp = db.registers.Where(x => x.phone.Equals(phone) && x.season_id == season && x.episode_id == episode ).FirstOrDefault();
+                var qu = db.questions.Where(x => x.id == QId).FirstOrDefault();
                 if (comp != null)
                 {
-                    comp.totalAnswered = totalAnswerdByCompetitor + 1;
-                    db.SaveChanges();
+                    if(qu.quNum == 9 || qu.quNum == 10)
+                    {
+                        comp.totalAnswered = totalAnswerdByCompetitor + 2;
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        comp.totalAnswered = totalAnswerdByCompetitor + 1;
+                        db.SaveChanges();
+                    }
+                    
                 }
             }
         }
 
         public int? GetTotalAnswerdByCompetitor(string phone)
         {
-            using(var db = new Wiha_likiEntities())
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
+            using (var db = new Wiha_likiEntities())
             {
-                var comp = db.registers.Where(x => x.phone.Equals(phone)).FirstOrDefault();
+                var comp = db.registers.Where(x => x.phone.Equals(phone) && x.episode_id == episode && x.season_id == season).FirstOrDefault();
                 if(comp != null)
                 {
                     if(comp.totalAnswered != null)
@@ -187,18 +233,18 @@ namespace wihalik_backend.Controllers
 // A function that generates a random letter between A-E
 public static string GenerateRandomLetter()
     {
-        // Create a Random object to generate random numbers
-        Random random = new Random();
+        //// Create a Random object to generate random numbers
+        //Random random = new Random();
 
-        // Generate a random number from 0 to 4
-        int number = random.Next(0, 5);
+        //// Generate a random number from 0 to 4
+        //int number = random.Next(0, 5);
 
-        // Convert the number to a letter using ASCII codes
-        // A has the code 65, B has 66, and so on
-        char letter = (char)(65 + number);
+        //// Convert the number to a letter using ASCII codes
+        //// A has the code 65, B has 66, and so on
+        //char letter = (char)(65 + number);
 
         // Return the letter
-        return letter.ToString();
+        return "a";
     }
 
 
@@ -209,11 +255,13 @@ public static string GenerateRandomLetter()
             Random random = new Random();
             string[] phoneNumbers =
                 {
-                "+251934567890", 
-                "+251945678901",
-                "+251956789012",
-                "251955115809",
-                "251972056584",
+                "+251934567890",
+                "+251934567890",
+                 "+251934567890",
+                  "+251934567890",
+                   "+251934567890",
+                    "+251934567890",
+                     "+251934567890",
 
             };
             // Get the length of the array
@@ -230,40 +278,26 @@ public static string GenerateRandomLetter()
     }
 
 
-    public int reg(string phone)
-        {
-            using(var db = new Wiha_likiEntities())
-            {
-                var r = new register
-                {
-                    phone = phone,
-                    totalAnswered = 0
-                };
+    
 
-                db.registers.Add(r);
-                db.SaveChanges();
-                return 1;
-            }
-        }
+        //[Route("api/registor/competitor")]
+        //[System.Web.Http.AcceptVerbs("POST")]
+        //[System.Web.Http.HttpPost]
+        //public int RegistorCompetitor(register data)
+        //{
+        //    using(var db = new Wiha_likiEntities())
+        //    {
+        //        var reg = new register()
+        //        {
+        //             phone = data.phone
 
-        [Route("api/registor/competitor")]
-        [System.Web.Http.AcceptVerbs("POST")]
-        [System.Web.Http.HttpPost]
-        public int RegistorCompetitor(register data)
-        {
-            using(var db = new Wiha_likiEntities())
-            {
-                var reg = new register()
-                {
-                     phone = data.phone
+        //        };
 
-                };
-
-                db.registers.Add(reg);
-                db.SaveChanges();
-                return 1;
-            }
-        }
+        //        db.registers.Add(reg);
+        //        db.SaveChanges();
+        //        return 1;
+        //    }
+        //}
 
 
 
@@ -287,53 +321,66 @@ public static string GenerateRandomLetter()
             }
         }
 
-        public int insertCompetitor(int answer,string msg,string phone,int QId)
+     
+        public int insertCompetitor(int answer, string msg, string phone, int QId)
         {
             using (var db = new Wiha_likiEntities())
             {
-               
-                try
+                using (var dbContextTransaction = db.Database.BeginTransaction())
                 {
-                    var check = db.answer_sms_mapping.Where(x => x.phone.Equals(phone) && x.qu_Id == QId).ToList();
-                    if (check.Count() == 0)
+                    try
                     {
-                        var obj = new answer_sms_mapping
-                        {
-                            answer = answer,
-                            phone = phone,
-                            msg = msg,
-                            qu_Id = QId,
-                            regDate = DateTime.Now
-                        };
+                        var check = db.answer_sms_mapping
+                            .Where(x => x.phone.Equals(phone) && x.qu_Id == QId)
+                            .ToList();
 
-                        if(answer == 1)
+                        if (check.Count() == 0)
                         {
-                            updateCompetitorTotalAnswerd(phone);
+                            var obj = new answer_sms_mapping
+                            {
+                                answer = answer,
+                                phone = phone,
+                                msg = msg,
+                                qu_Id = QId,
+                                regDate = DateTime.Now
+                            };
+
+                            if (answer == 1)
+                            {
+                                updateCompetitorTotalAnswerd(phone, QId);
+                            }
+
+                            db.answer_sms_mapping.Add(obj);
+                            db.SaveChanges();
+
+                            dbContextTransaction.Commit();
+                            return 1;
                         }
-                      
-                        db.answer_sms_mapping.Add(obj);
-                        db.SaveChanges();
-                        return 1;
+                        else
+                        {
+                            // Duplicate entry, rollback the transaction
+                            return 0;
+                        }
                     }
-                    else
+                    catch (Exception e)
                     {
+                        // Handle exceptions
+                        dbContextTransaction.Rollback();
                         return 0;
                     }
-                }catch(Exception e)
-                {
-                    return 0;
                 }
-              
+
             }
 
         }
 
-
         public int checkCompetitorRegistered(string phone)
         {
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
             using (var db = new Wiha_likiEntities())
             {
-                var query = db.registers.Where(x => x.phone.Equals(phone)).FirstOrDefault();
+                var query = db.registers.Where(x => x.phone.Equals(phone) && x.season_id == season && x.episode_id == episode).FirstOrDefault();
                 if(query != null)
                 {
                     return 1;
@@ -353,7 +400,7 @@ public static string GenerateRandomLetter()
                 var query = db.choices.Where(x => x.question_id == QId && x.isAnswer == 1).FirstOrDefault();
                 if(query != null)
                 {
-                    if(answer.Equals(query.alphabet, StringComparison.Ordinal))
+                    if (string.Equals(answer, query.alphabet, StringComparison.OrdinalIgnoreCase))
                     {
                         return true;
                     }

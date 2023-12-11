@@ -47,9 +47,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="registers">
+      <EntityTypeMapping TypeName="Wiha_likiModel.register">
+        <MappingFragment StoreEntitySet="register">
+          <ScalarProperty Name="season_id" ColumnName="season_id" />
+          <ScalarProperty Name="episode_id" ColumnName="episode_id" />
+          <ScalarProperty Name="totalAnswered" ColumnName="totalAnswered" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="questions">
       <EntityTypeMapping TypeName="Wiha_likiModel.question">
         <MappingFragment StoreEntitySet="questions">
+          <ScalarProperty Name="quNum" ColumnName="quNum" />
           <ScalarProperty Name="endDate" ColumnName="endDate" />
           <ScalarProperty Name="startDate" ColumnName="startDate" />
           <ScalarProperty Name="status" ColumnName="status" />
@@ -57,15 +69,6 @@
           <ScalarProperty Name="episode_id" ColumnName="episode_id" />
           <ScalarProperty Name="season_id" ColumnName="season_id" />
           <ScalarProperty Name="question_label" ColumnName="question_label" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="registers">
-      <EntityTypeMapping TypeName="Wiha_likiModel.register">
-        <MappingFragment StoreEntitySet="register">
-          <ScalarProperty Name="totalAnswered" ColumnName="totalAnswered" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

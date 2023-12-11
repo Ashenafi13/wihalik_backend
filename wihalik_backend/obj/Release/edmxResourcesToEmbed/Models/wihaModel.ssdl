@@ -46,6 +46,7 @@
     <Property Name="status" Type="int" />
     <Property Name="startDate" Type="datetime" />
     <Property Name="endDate" Type="datetime" />
+    <Property Name="quNum" Type="int" />
   </EntityType>
   <EntityType Name="register">
     <Key>
@@ -54,6 +55,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="phone" Type="nvarchar" MaxLength="200" />
     <Property Name="totalAnswered" Type="int" />
+    <Property Name="episode_id" Type="int" />
+    <Property Name="season_id" Type="int" />
   </EntityType>
   <EntityType Name="seasons">
     <Key>

@@ -107,6 +107,8 @@ namespace wihalik_backend.Controllers
 
         public void Addregistor(string phone)
         {
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
             using (var db = new Wiha_likiEntities())
             {
                 try
@@ -114,7 +116,9 @@ namespace wihalik_backend.Controllers
                     var req = new register
                     {
                         phone = phone,
-                        totalAnswered = 0
+                        totalAnswered = 0,
+                        episode_id = episode,
+                        season_id = season
                     };
 
                     int isExist = checkExist(phone);
@@ -130,12 +134,45 @@ namespace wihalik_backend.Controllers
                
             }
         }
+        public int GetActiveSeason()
+        {
+            using (var db = new Wiha_likiEntities())
+            {
+                var query = db.seasons.Where(x => x.status == 1).FirstOrDefault();
 
+                if (query != null)
+                {
+                    return query.id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public int GetActivEpisodes()
+        {
+            using (var db = new Wiha_likiEntities())
+            {
+                var query = db.episodes.Where(x => x.status == 1).FirstOrDefault();
+                if (query != null)
+                {
+                    return query.id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
         public int checkExist(string phone)
         {
-           using(var db = new Wiha_likiEntities())
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
+            using (var db = new Wiha_likiEntities())
             {
-                var reg = db.registers.Where(x => x.phone.Equals(phone)).FirstOrDefault();
+                var reg = db.registers.Where(x => x.phone.Equals(phone) && x.season_id == season && x.episode_id == episode).FirstOrDefault();
                 if(reg != null)
                 {
                     return 1;
@@ -153,9 +190,11 @@ namespace wihalik_backend.Controllers
         [System.Web.Http.HttpGet]
         public IEnumerable<register> GetRegisters()
         {
-            using(var db = new Wiha_likiEntities())
+            int season = GetActiveSeason();
+            int episode = GetActivEpisodes();
+            using (var db = new Wiha_likiEntities())
             {
-                var req = db.registers.ToList();
+                var req = db.registers.Where(x=>x.episode_id == episode && x.season_id == season).ToList();
                 return req;
             }
         }

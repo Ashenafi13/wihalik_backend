@@ -17,5 +17,7 @@ namespace wihalik_backend.Models
         public int id { get; set; }
         public string phone { get; set; }
         public Nullable<int> totalAnswered { get; set; }
+        public Nullable<int> episode_id { get; set; }
+        public Nullable<int> season_id { get; set; }
     }
 }
