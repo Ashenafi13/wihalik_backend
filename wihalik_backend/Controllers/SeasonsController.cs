@@ -39,7 +39,7 @@ namespace wihalik_backend.Controllers
                     list.Add(new season_settings {
                          season = s.name,
                          SId = s.id,
-                          status = s.status,
+                         status = s.status,
                          numberOfEpisodes = numberOfEpisodes
                     });
                 });

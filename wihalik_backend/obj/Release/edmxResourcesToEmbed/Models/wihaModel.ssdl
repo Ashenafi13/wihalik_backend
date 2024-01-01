@@ -34,6 +34,15 @@
     <Property Name="endedDateTime" Type="datetime" />
     <Property Name="timer_status" Type="int" />
   </EntityType>
+  <EntityType Name="question_time_tracker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question" Type="int" />
+    <Property Name="q_percent" Type="int" />
+    <Property Name="second" Type="int" />
+  </EntityType>
   <EntityType Name="questions">
     <Key>
       <PropertyRef Name="id" />
@@ -47,6 +56,14 @@
     <Property Name="startDate" Type="datetime" />
     <Property Name="endDate" Type="datetime" />
     <Property Name="quNum" Type="int" />
+  </EntityType>
+  <EntityType Name="reg_time_tracker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="min" Type="int" />
+    <Property Name="second" Type="int" />
   </EntityType>
   <EntityType Name="register">
     <Key>
@@ -70,7 +87,9 @@
     <EntitySet Name="answer_sms_mapping" EntityType="Self.answer_sms_mapping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="choices" EntityType="Self.choices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="episodes" EntityType="Self.episodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="question_time_tracker" EntityType="Self.question_time_tracker" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="questions" EntityType="Self.questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_time_tracker" EntityType="Self.reg_time_tracker" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="seasons" EntityType="Self.seasons" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

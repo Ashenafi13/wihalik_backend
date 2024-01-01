@@ -73,5 +73,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="reg_time_tracker">
+      <EntityTypeMapping TypeName="Wiha_likiModel.reg_time_tracker">
+        <MappingFragment StoreEntitySet="reg_time_tracker">
+          <ScalarProperty Name="second" ColumnName="second" />
+          <ScalarProperty Name="min" ColumnName="min" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="question_time_tracker">
+      <EntityTypeMapping TypeName="Wiha_likiModel.question_time_tracker">
+        <MappingFragment StoreEntitySet="question_time_tracker">
+          <ScalarProperty Name="second" ColumnName="second" />
+          <ScalarProperty Name="q_percent" ColumnName="q_percent" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -31,5 +31,7 @@ namespace wihalik_backend.Models
         public virtual DbSet<choice> choices { get; set; }
         public virtual DbSet<register> registers { get; set; }
         public virtual DbSet<question> questions { get; set; }
+        public virtual DbSet<reg_time_tracker> reg_time_tracker { get; set; }
+        public virtual DbSet<question_time_tracker> question_time_tracker { get; set; }
     }
 }

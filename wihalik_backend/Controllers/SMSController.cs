@@ -101,27 +101,27 @@ namespace wihalik_backend.Controllers
         }
         public void updateCompetitorTotalAnswerd(string phone,int QId)
         {
-            int season = GetActiveSeason();
-            int episode = GetActivEpisodes();
-            int? totalAnswerdByCompetitor = GetTotalAnswerdByCompetitor(phone);
-            using (var db = new Wiha_likiEntities())
+            try
             {
-                var comp = db.registers.Where(x => x.phone.Equals(phone) && x.season_id == season && x.episode_id == episode ).FirstOrDefault();
-                var qu = db.questions.Where(x => x.id == QId).FirstOrDefault();
-                if (comp != null)
+                int season = GetActiveSeason();
+                int episode = GetActivEpisodes();
+                int? totalAnswerdByCompetitor = GetTotalAnswerdByCompetitor(phone);
+                using (var db = new Wiha_likiEntities())
                 {
-                    if(qu.quNum == 9 || qu.quNum == 10)
-                    {
-                        comp.totalAnswered = totalAnswerdByCompetitor + 2;
-                        db.SaveChanges();
-                    }
-                    else
+                    var comp = db.registers.Where(x => x.phone.Equals(phone) && x.season_id == season && x.episode_id == episode).FirstOrDefault();
+                    var qu = db.questions.Where(x => x.id == QId).FirstOrDefault();
+                    if (comp != null)
                     {
                         comp.totalAnswered = totalAnswerdByCompetitor + 1;
                         db.SaveChanges();
+
                     }
-                    
                 }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -257,9 +257,9 @@ public static string GenerateRandomLetter()
                 {
                 "+251934567890",
                 "+251934567890",
-                 "+251934567890",
-                  "+251934567890",
-                   "+251934567890",
+                 "+251964567890",
+                  "+251994567890",
+                   "+251984567890",
                     "+251934567890",
                      "+251934567890",
 
@@ -432,6 +432,8 @@ public static string GenerateRandomLetter()
                 return list;
             }
         }
+
+
         [Route("api/Competitor/rank")]
         [System.Web.Http.AcceptVerbs("GET")]
         [System.Web.Http.HttpGet]

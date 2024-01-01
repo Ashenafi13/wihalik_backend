@@ -39,6 +39,15 @@
           <Property Name="endedDateTime" Type="datetime" />
           <Property Name="timer_status" Type="int" />
         </EntityType>
+        <EntityType Name="question_time_tracker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question" Type="int" />
+          <Property Name="q_percent" Type="int" />
+          <Property Name="second" Type="int" />
+        </EntityType>
         <EntityType Name="questions">
           <Key>
             <PropertyRef Name="id" />
@@ -52,6 +61,14 @@
           <Property Name="startDate" Type="datetime" />
           <Property Name="endDate" Type="datetime" />
           <Property Name="quNum" Type="int" />
+        </EntityType>
+        <EntityType Name="reg_time_tracker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="min" Type="int" />
+          <Property Name="second" Type="int" />
         </EntityType>
         <EntityType Name="register">
           <Key>
@@ -75,7 +92,9 @@
           <EntitySet Name="answer_sms_mapping" EntityType="Self.answer_sms_mapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="choices" EntityType="Self.choices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="episodes" EntityType="Self.episodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question_time_tracker" EntityType="Self.question_time_tracker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="questions" EntityType="Self.questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reg_time_tracker" EntityType="Self.reg_time_tracker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="seasons" EntityType="Self.seasons" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -122,6 +141,8 @@
           <EntitySet Name="choices" EntityType="Wiha_likiModel.choice" />
           <EntitySet Name="registers" EntityType="Wiha_likiModel.register" />
           <EntitySet Name="questions" EntityType="Wiha_likiModel.question" />
+          <EntitySet Name="reg_time_tracker" EntityType="Wiha_likiModel.reg_time_tracker" />
+          <EntitySet Name="question_time_tracker" EntityType="Wiha_likiModel.question_time_tracker" />
         </EntityContainer>
         <EntityType Name="choice">
           <Key>
@@ -156,6 +177,23 @@
           <Property Name="startDate" Type="DateTime" Precision="3" />
           <Property Name="endDate" Type="DateTime" Precision="3" />
           <Property Name="quNum" Type="Int32" />
+        </EntityType>
+        <EntityType Name="reg_time_tracker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="min" Type="Int32" />
+          <Property Name="second" Type="Int32" />
+        </EntityType>
+        <EntityType Name="question_time_tracker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question" Type="Int32" />
+          <Property Name="q_percent" Type="Int32" />
+          <Property Name="second" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -231,6 +269,25 @@
                 <ScalarProperty Name="episode_id" ColumnName="episode_id" />
                 <ScalarProperty Name="season_id" ColumnName="season_id" />
                 <ScalarProperty Name="question_label" ColumnName="question_label" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reg_time_tracker">
+            <EntityTypeMapping TypeName="Wiha_likiModel.reg_time_tracker">
+              <MappingFragment StoreEntitySet="reg_time_tracker">
+                <ScalarProperty Name="second" ColumnName="second" />
+                <ScalarProperty Name="min" ColumnName="min" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question_time_tracker">
+            <EntityTypeMapping TypeName="Wiha_likiModel.question_time_tracker">
+              <MappingFragment StoreEntitySet="question_time_tracker">
+                <ScalarProperty Name="second" ColumnName="second" />
+                <ScalarProperty Name="q_percent" ColumnName="q_percent" />
+                <ScalarProperty Name="question" ColumnName="question" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

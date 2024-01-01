@@ -41,23 +41,32 @@ namespace wihalik_backend.Controllers
         [System.Web.Http.HttpPost]
         public int registor()
         {
-            DateTime? startTime = GetStartDate();
-            DateTime? endTime = GetEndDate();
-            using (var db = new EBCSMSEntities())
+            try
             {
-                var smsQuery = db.Database.SqlQuery<ozekimessagein>("SELECT * FROM [EBCSMS].[dbo].[ozekimessagein] WHERE receiver='+800' AND receivedtime BETWEEN '" + startTime + "' AND '" + endTime + "'").ToList();
-                if(smsQuery.Count > 0)
+                DateTime? startTime = GetStartDate();
+                DateTime? endTime = GetEndDate();
+                using (var db = new EBCSMSEntities())
                 {
-                    smsQuery.ForEach((sms) => {
-                        Addregistor(sms.sender);
-                    });
+                    var smsQuery = db.Database.SqlQuery<ozekimessagein>("SELECT * FROM [EBCSMS].[dbo].[ozekimessagein] WHERE receiver='+800' AND receivedtime BETWEEN '" + startTime + "' AND '" + endTime + "'").ToList();
+                    if (smsQuery.Count > 0)
+                    {
+                        smsQuery.ForEach((sms) =>
+                        {
+                            Addregistor(sms.sender);
+                        });
 
-                    return 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                else
-                {
-                    return 0;
-                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

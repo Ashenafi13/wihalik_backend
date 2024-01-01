@@ -39,6 +39,8 @@
     <EntitySet Name="choices" EntityType="Wiha_likiModel.choice" />
     <EntitySet Name="registers" EntityType="Wiha_likiModel.register" />
     <EntitySet Name="questions" EntityType="Wiha_likiModel.question" />
+    <EntitySet Name="reg_time_tracker" EntityType="Wiha_likiModel.reg_time_tracker" />
+    <EntitySet Name="question_time_tracker" EntityType="Wiha_likiModel.question_time_tracker" />
   </EntityContainer>
   <EntityType Name="choice">
     <Key>
@@ -73,5 +75,22 @@
     <Property Name="startDate" Type="DateTime" Precision="3" />
     <Property Name="endDate" Type="DateTime" Precision="3" />
     <Property Name="quNum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="reg_time_tracker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="min" Type="Int32" />
+    <Property Name="second" Type="Int32" />
+  </EntityType>
+  <EntityType Name="question_time_tracker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="question" Type="Int32" />
+    <Property Name="q_percent" Type="Int32" />
+    <Property Name="second" Type="Int32" />
   </EntityType>
 </Schema>
